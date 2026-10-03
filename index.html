@@ -1,0 +1,642 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Happy Birthday ❤️</title>
+
+<style>
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: "Poppins", Arial, sans-serif;
+    background: linear-gradient(135deg, #ff758c, #ff7eb3, #c471ed);
+    min-height: 100vh;
+    overflow-x: hidden;
+    color: white;
+}
+
+/* =========================
+   BACKGROUND HEART
+========================= */
+
+.heart {
+    position: fixed;
+    bottom: -30px;
+    font-size: 25px;
+    animation: naik 7s linear infinite;
+    opacity: 0.7;
+    z-index: 0;
+}
+
+@keyframes naik {
+    0% {
+        transform: translateY(0) rotate(0deg);
+        opacity: 0;
+    }
+
+    20% {
+        opacity: 0.8;
+    }
+
+    100% {
+        transform: translateY(-110vh) rotate(360deg);
+        opacity: 0;
+    }
+}
+
+/* =========================
+   HALAMAN AWAL
+========================= */
+
+.page {
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 30px;
+    position: relative;
+    z-index: 2;
+}
+
+.card {
+    width: 100%;
+    max-width: 500px;
+    text-align: center;
+    background: rgba(255,255,255,0.16);
+    backdrop-filter: blur(15px);
+    border: 1px solid rgba(255,255,255,0.3);
+    border-radius: 30px;
+    padding: 40px 25px;
+    box-shadow: 0 20px 60px rgba(0,0,0,0.2);
+}
+
+.card h1 {
+    font-size: 35px;
+    margin-bottom: 10px;
+}
+
+.card p {
+    font-size: 17px;
+    opacity: 0.9;
+}
+
+/* =========================
+   KADO
+========================= */
+
+.gift-area {
+    margin: 40px auto;
+    cursor: pointer;
+    width: 160px;
+    position: relative;
+}
+
+.gift {
+    position: relative;
+    width: 140px;
+    height: 110px;
+    margin: auto;
+    background: #ff315f;
+    border-radius: 10px;
+    box-shadow: 0 15px 30px rgba(0,0,0,0.25);
+    transition: 0.3s;
+}
+
+.gift:hover {
+    transform: scale(1.08);
+}
+
+.gift::before {
+    content: "";
+    position: absolute;
+    width: 25px;
+    height: 110px;
+    background: #ffd166;
+    left: 57px;
+    top: 0;
+}
+
+.gift::after {
+    content: "";
+    position: absolute;
+    width: 160px;
+    height: 25px;
+    background: #ffd166;
+    left: -10px;
+    top: 15px;
+    border-radius: 5px;
+}
+
+.lid {
+    position: absolute;
+    width: 160px;
+    height: 30px;
+    background: #ff174f;
+    top: -20px;
+    left: -10px;
+    border-radius: 7px;
+    z-index: 3;
+    transition: 1s;
+}
+
+.bow {
+    position: absolute;
+    width: 50px;
+    height: 35px;
+    border: 8px solid #ffd166;
+    border-radius: 50%;
+    top: -40px;
+    left: 43px;
+    z-index: 5;
+}
+
+.gift.open .lid {
+    transform: translateY(-100px) rotate(-15deg);
+}
+
+/* =========================
+   BUTTON
+========================= */
+
+.btn {
+    border: none;
+    padding: 14px 28px;
+    border-radius: 30px;
+    background: white;
+    color: #ff3d6e;
+    font-size: 16px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: 0.3s;
+    box-shadow: 0 8px 20px rgba(0,0,0,0.2);
+    margin: 8px;
+}
+
+.btn:hover {
+    transform: scale(1.08);
+    box-shadow: 0 12px 25px rgba(0,0,0,0.3);
+}
+
+/* =========================
+   KONTEN
+========================= */
+
+.hidden {
+    display: none;
+}
+
+.birthday {
+    animation: muncul 1s ease;
+}
+
+@keyframes muncul {
+    from {
+        opacity: 0;
+        transform: scale(0.7);
+    }
+
+    to {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+.birthday h1 {
+    font-size: 45px;
+    margin-bottom: 15px;
+}
+
+.name {
+    color: #fff4a8;
+    text-shadow: 0 0 15px rgba(255,255,255,0.8);
+}
+
+/* =========================
+   FOTO
+========================= */
+
+.photo {
+    width: 220px;
+    height: 220px;
+    object-fit: cover;
+    border-radius: 50%;
+    border: 7px solid white;
+    margin: 25px auto;
+    display: block;
+    box-shadow: 0 15px 35px rgba(0,0,0,0.25);
+}
+
+/* =========================
+   SURAT
+========================= */
+
+.letter {
+    margin-top: 25px;
+    background: rgba(255,255,255,0.95);
+    color: #444;
+    padding: 30px;
+    border-radius: 20px;
+    text-align: left;
+    line-height: 1.8;
+    box-shadow: 0 15px 40px rgba(0,0,0,0.2);
+    animation: muncul 0.8s ease;
+}
+
+.letter h2 {
+    text-align: center;
+    color: #ff477e;
+    margin-bottom: 20px;
+}
+
+.letter p {
+    color: #555;
+    margin-bottom: 15px;
+}
+
+/* =========================
+   SURPRISE
+========================= */
+
+.final {
+    margin-top: 30px;
+    animation: muncul 1s ease;
+}
+
+.final h2 {
+    font-size: 35px;
+    margin-bottom: 15px;
+}
+
+.big-heart {
+    font-size: 90px;
+    animation: denyut 1s infinite;
+}
+
+@keyframes denyut {
+    0%,100% {
+        transform: scale(1);
+    }
+
+    50% {
+        transform: scale(1.2);
+    }
+}
+
+/* =========================
+   CONFETTI
+========================= */
+
+.confetti {
+    position: fixed;
+    width: 10px;
+    height: 10px;
+    top: -20px;
+    z-index: 99;
+    animation: jatuh 4s linear forwards;
+}
+
+@keyframes jatuh {
+    to {
+        transform: translateY(110vh) rotate(720deg);
+    }
+}
+
+/* =========================
+   MOBILE
+========================= */
+
+@media(max-width:600px) {
+
+    .card {
+        padding: 30px 18px;
+    }
+
+    .card h1 {
+        font-size: 28px;
+    }
+
+    .birthday h1 {
+        font-size: 35px;
+    }
+
+    .letter {
+        padding: 22px;
+    }
+
+    .photo {
+        width: 180px;
+        height: 180px;
+    }
+}
+</style>
+</head>
+
+<body>
+
+<!-- =========================
+     MUSIK
+========================= -->
+
+<audio id="music" loop>
+    <source src="musik.mp3" type="audio/mpeg">
+</audio>
+
+
+<!-- =========================
+     HALAMAN
+========================= -->
+
+<div class="page">
+
+<div class="card">
+
+    <!-- AWAL -->
+
+    <div id="opening">
+
+        <h1> Ada Sesuatu Buat Kamu</h1>
+        <p>(Princes akuu Zahra Yunita)<br>
+
+        </p>
+
+        <p>
+            Tapi sebelum itu...<br>
+            kamu harus buka hadiahnya dulu ❤️
+        </p>
+
+        <div class="gift-area" onclick="openGift()">
+
+            <div class="gift" id="gift">
+
+                <div class="lid"></div>
+
+                <div class="bow"></div>
+
+            </div>
+
+        </div>
+
+        <p>
+            👆 Klik kadonya
+        </p>
+
+    </div>
+
+
+    <!-- UCAPAN ULTAH -->
+
+    <div id="birthday" class="hidden birthday">
+
+        <div style="font-size:60px;">🎉🎂🎉</div>
+
+        <h1>
+            Happy Birthday
+        </h1>
+
+        <h1 class="name">
+            Sayang 🤍
+        </h1>
+
+        <p>
+            Hari ini adalah hari spesial,
+            karena seseorang yang sangat berarti
+            buat aku bertambah usia.
+        </p>
+
+        <img
+            src="kamu.jpeg"
+            class="photo"
+            alt="Foto kita"
+        >
+
+        <button class="btn" onclick="showLetter()">
+            💌 Buka Pesan Untukmu
+        </button>
+
+        <div id="letter" class="hidden letter">
+
+            <h2>💌 Untuk Kamu</h2>
+
+            <p>
+                Selamat ulang tahun, sayang 🤍
+            </p>
+
+            <p>
+                Hari ini bukan cuma tentang bertambahnya
+                umur kamu, tapi juga tentang bersyukurnya
+                aku karena pernah dipertemukan dengan kamu.
+            </p>
+
+            <p>
+                Aku mungkin ngga selalu bisa memberikan
+                sesuatu yang mahal atau sempurna, tapi aku
+                berharap aku bisa selalu memberikan alasan
+                buat kamu tersenyum.
+            </p>
+
+            <p>
+                Semoga di umur kamu yang baru ini,
+                semua hal yang kamu impikan perlahan
+                bisa menjadi kenyataan.
+            </p>
+
+            <p>
+                Semoga kamu selalu sehat, bahagia,
+                dan jangan pernah merasa sendirian.
+            </p>
+
+            <p>
+                Kalau suatu hari nanti kamu merasa dunia
+                terlalu berat, ingat kalau ada seseorang
+                yang selalu ingin melihat kamu baik-baik saja.
+                🤍
+            </p>
+
+            <p>
+                Sekali lagi...
+            </p>
+
+            <p style="text-align:center;font-size:22px;">
+                <b>HAPPY BIRTHDAY, SAYANG! 🎂🤍</b>
+            </p>
+
+            <div style="text-align:center;">
+
+                <button class="btn" onclick="finalSurprise()">
+                    🤍 Ada Satu Lagi
+                </button>
+
+            </div>
+
+        </div>
+
+
+        <!-- FINAL -->
+
+        <div id="final" class="hidden final">
+
+            <div class="big-heart">
+                🤍
+            </div>
+
+            <h2>
+                I Love You
+            </h2>
+
+            <p>
+                Bukan cuma hari ini.<br>
+                Tapi semoga setiap hari. 🤍
+            </p>
+
+            <br>
+
+            <p style="font-size:14px;">
+                Terima kasih sudah hadir di hidupku.
+            </p>
+
+        </div>
+
+    </div>
+
+</div>
+
+</div>
+
+
+<script>
+
+/* =========================
+   BUKA KADO
+========================= */
+
+function openGift() {
+
+    const gift = document.getElementById("gift");
+
+    gift.classList.add("open");
+
+    setTimeout(() => {
+
+        document.getElementById("opening").classList.add("hidden");
+
+        document.getElementById("birthday").classList.remove("hidden");
+
+        startConfetti();
+
+        document.getElementById("music").play().catch(() => {});
+
+    }, 1000);
+
+}
+
+
+/* =========================
+   BUKA SURAT
+========================= */
+
+function showLetter() {
+
+    document.getElementById("letter").classList.remove("hidden");
+
+}
+
+
+/* =========================
+   FINAL SURPRISE
+========================= */
+
+function finalSurprise() {
+
+    document.getElementById("final").classList.remove("hidden");
+
+    startConfetti();
+
+}
+
+
+/* =========================
+   CONFETTI
+========================= */
+
+function startConfetti() {
+
+    for(let i = 0; i < 120; i++) {
+
+        const confetti = document.createElement("div");
+
+        confetti.classList.add("confetti");
+
+        confetti.style.left =
+            Math.random() * 100 + "vw";
+
+        confetti.style.animationDelay =
+            Math.random() * 2 + "s";
+
+        confetti.style.transform =
+            `rotate(${Math.random()*360}deg)`;
+
+        const ukuran =
+            Math.random() * 8 + 5;
+
+        confetti.style.width =
+            ukuran + "px";
+
+        confetti.style.height =
+            ukuran + "px";
+
+        confetti.style.background =
+            `hsl(${Math.random()*360}, 100%, 70%)`;
+
+        document.body.appendChild(confetti);
+
+        setTimeout(() => {
+            confetti.remove();
+        }, 5000);
+
+    }
+
+}
+
+
+/* =========================
+   FLOATING HEART
+========================= */
+
+function createHeart() {
+
+    const heart = document.createElement("div");
+
+    heart.classList.add("heart");
+
+    heart.innerHTML =
+        ["❤️","💕","💗","💖","💘"][Math.floor(Math.random()*5)];
+
+    heart.style.left =
+        Math.random() * 100 + "vw";
+
+    heart.style.animationDuration =
+        (Math.random() * 4 + 5) + "s";
+
+    heart.style.fontSize =
+        (Math.random() * 20 + 15) + "px";
+
+    document.body.appendChild(heart);
+
+    setTimeout(() => {
+        heart.remove();
+    }, 9000);
+
+}
+
+setInterval(createHeart, 700);
+
+</script>
+
+</body>
+</html>
